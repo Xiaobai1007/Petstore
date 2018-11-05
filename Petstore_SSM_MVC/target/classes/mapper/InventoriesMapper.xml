@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaobai.dao.InventoriesMapper">
+  <resultMap id="BaseResultMap" type="com.xiaobai.entity.Inventories">
+    <id column="inventories_id" jdbcType="INTEGER" property="inventoriesId" />
+    <result column="inventories_quantity" jdbcType="INTEGER" property="inventoriesQuantity" />
+    <result column="pet_id" jdbcType="INTEGER" property="petId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from inventories
+    where inventories_id = #{inventoriesId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xiaobai.entity.Inventories">
+    insert into inventories (inventories_id, inventories_quantity, 
+      pet_id)
+    values (#{inventoriesId,jdbcType=INTEGER}, #{inventoriesQuantity,jdbcType=INTEGER}, 
+      #{petId,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.xiaobai.entity.Inventories">
+    update inventories
+    set inventories_quantity = #{inventoriesQuantity,jdbcType=INTEGER},
+      pet_id = #{petId,jdbcType=INTEGER}
+    where inventories_id = #{inventoriesId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select inventories_id, inventories_quantity, pet_id
+    from inventories
+    where inventories_id = #{inventoriesId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select inventories_id, inventories_quantity, pet_id
+    from inventories
+  </select>
+</mapper>

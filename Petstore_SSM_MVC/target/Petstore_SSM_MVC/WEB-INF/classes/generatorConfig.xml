@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="xxx" targetRuntime="MyBatis3Simple">
+
+        <!--清除实体类中的注释-->
+        <commentGenerator>
+            <property name="suppressDate" value="false" />
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--连接数据库-->
+        <jdbcConnection driverClass="org.mariadb.jdbc.Driver"
+                        connectionURL="jdbc:mariadb://localhost/PetstoreDB"
+                        userId="root" password="Qi1007..">
+        </jdbcConnection>
+
+        <!--生成实体类-->
+        <javaModelGenerator targetPackage="com.xiaobai.entity" targetProject="src\main\java">
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--生成配置文件-->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="src\main\resources"/>
+
+        <!--生成业务逻辑层-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xiaobai.dao"  targetProject="src\main\java"/>
+
+        <!--需要渲染的表-->
+        <table tableName="%">
+            <generatedKey column="ID" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+
+    </context>
+</generatorConfiguration>
