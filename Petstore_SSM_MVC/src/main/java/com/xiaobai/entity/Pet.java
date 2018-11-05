@@ -5,13 +5,15 @@ import java.math.BigDecimal;
 public class Pet {
     private Integer petId;
 
-    private Integer categoryId;
+    private Category categoryInfo;
 
     private String petName;
 
     private BigDecimal petPrice;
 
-    private Integer photoId;
+    private String petPhoto;
+
+    private String petTag;
 
     private String petStatus;
 
@@ -23,12 +25,12 @@ public class Pet {
         this.petId = petId;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Category getCategoryInfo() {
+        return categoryInfo;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryInfo(Category categoryInfo) {
+        this.categoryInfo = categoryInfo;
     }
 
     public String getPetName() {
@@ -47,12 +49,20 @@ public class Pet {
         this.petPrice = petPrice;
     }
 
-    public Integer getPhotoId() {
-        return photoId;
+    public String getPetPhoto() {
+        return petPhoto;
     }
 
-    public void setPhotoId(Integer photoId) {
-        this.photoId = photoId;
+    public void setPetPhoto(String petPhoto) {
+        this.petPhoto = petPhoto == null ? null : petPhoto.trim();
+    }
+
+    public String getPetTag() {
+        return petTag;
+    }
+
+    public void setPetTag(String petTag) {
+        this.petTag = petTag == null ? null : petTag.trim();
     }
 
     public String getPetStatus() {
@@ -61,5 +71,18 @@ public class Pet {
 
     public void setPetStatus(String petStatus) {
         this.petStatus = petStatus == null ? null : petStatus.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "petId=" + petId +
+                ", categoryInfo=" + categoryInfo +
+                ", petName='" + petName + '\'' +
+                ", petPrice=" + petPrice +
+                ", petPhoto='" + petPhoto + '\'' +
+                ", petTag='" + petTag + '\'' +
+                ", petStatus='" + petStatus + '\'' +
+                '}';
     }
 }

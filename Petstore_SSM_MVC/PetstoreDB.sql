@@ -13,8 +13,8 @@ create table `User`(
 	user_status int
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 insert into `User`(user_name,user_first_name,user_last_name,user_email,user_password,user_phone,user_status) values
-('郭富城','富城','郭','2934293423@qq.com','123456','15093482349',0),
-('刘德华','德华','刘','9234213623@qq.com','123456','13393482349',0);
+('admin','世棋','郭','849494330@qq.com','123','18370622009',0),
+('user','欣','陶','9234213623@qq.com','123','13684860787',0);
 select*from `User`;
 
 create table Category( 	# 类型

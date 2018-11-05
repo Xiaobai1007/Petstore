@@ -8,11 +8,11 @@ public interface PetMapper {
 
     int insert(Pet record);
 
-    Pet selectByPrimaryKey(Integer petId);
+    List<Pet> selectByPrimaryKey(Pet pet);
 
     List<Pet> selectAll();
 
     int updateByPrimaryKey(Pet record);
 
-    Pet selectByPetStatus(String petStatus);
+    List<Pet> selectByPetStatus(Pet pet);
 }

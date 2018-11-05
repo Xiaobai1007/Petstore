@@ -18,10 +18,10 @@
   </delete>
 
   <insert id="insert" parameterType="com.xiaobai.entity.User">
-    insert into user (user_id, user_name, user_first_name, 
+    insert into user (user_name, user_first_name,
       user_last_name, user_email, user_password, 
       user_phone, user_status)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userFirstName,jdbcType=VARCHAR}, 
+    values (#{userName,jdbcType=VARCHAR}, #{userFirstName,jdbcType=VARCHAR},
       #{userLastName,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
       #{userPhone,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER})
   </insert>
@@ -51,11 +51,11 @@
     from user
   </select>
 
-  <select id="login" resultType="java.lang.Integer" parameterType="com.xiaobai.entity.User">
-    select count(*) from user where user_name = #{userName,jdbcType=VARCHAR} and user_password = #{userPassword,jdbcType=VARCHAR}
+  <select id="login" resultType="java.lang.Integer" >
+    select count(*) from user where user_name = #{arg0} and user_password = #{arg1}
   </select>
 
-  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="String">
-    select * from user where user_name = #{userName,jdbcType=VARCHAR}
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="com.xiaobai.entity.User">
+    select * from user where user_name like '%${userName}%'
   </select>
 </mapper>

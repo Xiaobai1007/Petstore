@@ -14,7 +14,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    int login(User user);
+    int login(String userName, String userPassword);
 
-    User selectByUserName(String userName);
+    List<User> selectByUserName(User user);
 }

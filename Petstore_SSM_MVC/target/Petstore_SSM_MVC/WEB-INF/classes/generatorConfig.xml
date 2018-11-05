@@ -29,7 +29,7 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.xiaobai.dao"  targetProject="src\main\java"/>
 
         <!--需要渲染的表-->
-        <table tableName="%">
+        <table tableName="Pet">
             <generatedKey column="ID" sqlStatement="JDBC" identity="true"/>
         </table>
 
