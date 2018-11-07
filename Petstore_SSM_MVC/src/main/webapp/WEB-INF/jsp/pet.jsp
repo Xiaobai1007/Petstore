@@ -5,6 +5,7 @@
 </head>
 <body>
 <h2>欢迎${sessionScope.user},来到宠物商城</h2>
+<p><a href="/pet/insertPetForm">添加宠物</a></p>
 <input type="text" name="selectPetId" id="selectPetId" style="width:300px;margin-bottom: 5px">&nbsp;
 <input type="button" value="搜索" id="selectBtn"><br>
 <div id="radioDiv">
@@ -36,7 +37,7 @@
             success: function (data) {
                 var tbody = $("#tbody");
                 $.each(data, function (index, obj) {
-                    tbody.append("<tr><td>" + obj.petId + "</td><td>" + obj.petName + "</td><td>" + obj.categoryInfo.categoryName + "</td><td>" + obj.petPrice + "</td><td><img src='/images/" + obj.petPhoto + "' style='width: 5em;height: 3em;'/></td><td>" + obj.petTag + "</td><td>" + obj.petStatus + "</td><td><a href='#'>修改</a>&nbsp;<a href='#' class='delPet' value=" + obj.petId + ">删除</a></td></tr>")
+                    tbody.append("<tr><td>" + obj.petId + "</td><td>" + obj.petName + "</td><td>" + obj.categoryInfo.categoryName + "</td><td>" + obj.petPrice + "</td><td><img src='/images/" + obj.petPhoto + "' style='width: 5em;height: 3em;'/></td><td>" + obj.petTag + "</td><td>" + obj.petStatus + "</td><td><a href='/pet/updatePetForm?petId="+obj.petId+"'>修改</a>&nbsp;<a href='#' class='delPet' value=" + obj.petId + ">删除</a></td></tr>")
                 })
             }
         })
@@ -44,6 +45,7 @@
     list();
 
     $("#tbody").on("click", ".delPet", function () {
+        var tr = $(this).parent().parent();
         if (window.confirm("是否确认删除？")) {
             $.ajax({
                 url: "/pet/deletePet",
@@ -51,7 +53,7 @@
                 data: {"petId": $(this).attr("value")},
                 success: function (data) {
                     alert(data.msg)
-                    window.location.href = "/pet/selectPetAll";
+                    tr.remove();
                 }
             })
         } else {
@@ -68,7 +70,7 @@
                 $("#tbody tr").remove()
                 var tbody = $("#tbody");
                 $.each(data, function (index, obj) {
-                    tbody.append("<tr><td>" + obj.petId + "</td><td>" + obj.petName + "</td><td>" + obj.categoryInfo.categoryName + "</td><td>" + obj.petPrice + "</td><td><img src='/images/" + obj.petPhoto + "' style='width: 5em;height: 3em;'/></td><td>" + obj.petTag + "</td><td>" + obj.petStatus + "</td><td><a href='#'>修改</a>&nbsp;<a href='#' class='delPet' value=" + obj.petId + ">删除</a></td></tr>")
+                    tbody.append("<tr><td>" + obj.petId + "</td><td>" + obj.petName + "</td><td>" + obj.categoryInfo.categoryName + "</td><td>" + obj.petPrice + "</td><td><img src='/images/" + obj.petPhoto + "' style='width: 5em;height: 3em;'/></td><td>" + obj.petTag + "</td><td>" + obj.petStatus + "</td><td><a href='/pet/updatePetForm?petId="+obj.petId+"'>修改</a>&nbsp;<a href='#' class='delPet' value=" + obj.petId + ">删除</a></td></tr>")
                 })
             }
         })
@@ -82,9 +84,8 @@
             success:function (data) {
                 var tbody = $("#tbody");
                 $("#tbody tr").remove()
-                console.log(data)
                 $.each(data,function (index,obj) {
-                    tbody.append("<tr><td>" + obj.petId + "</td><td>" + obj.petName + "</td><td>" + obj.categoryInfo.categoryName + "</td><td>" + obj.petPrice + "</td><td><img src='/images/" + obj.petPhoto + "' style='width: 5em;height: 3em;'/></td><td>" + obj.petTag + "</td><td>" + obj.petStatus + "</td><td><a href='#'>修改</a>&nbsp;<a href='#' class='delPet' value=" + obj.petId + ">删除</a></td></tr>")
+                    tbody.append("<tr><td>" + obj.petId + "</td><td>" + obj.petName + "</td><td>" + obj.categoryInfo.categoryName + "</td><td>" + obj.petPrice + "</td><td><img src='/images/" + obj.petPhoto + "' style='width: 5em;height: 3em;'/></td><td>" + obj.petTag + "</td><td>" + obj.petStatus + "</td><td><a href='/pet/updatePetForm?petId="+obj.petId+"'>修改</a>&nbsp;<a href='#' class='delPet' value=" + obj.petId + ">删除</a></td></tr>")
                 })
             }
         })

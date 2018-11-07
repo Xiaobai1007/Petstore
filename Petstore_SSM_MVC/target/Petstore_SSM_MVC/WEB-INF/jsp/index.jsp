@@ -44,6 +44,7 @@
     list();
 
     $("#tbody").on("click",".delUser",function () {
+        var tr = $(this).parent().parent();
         if (window.confirm("是否确认删除？")) {
             $.ajax({
                 url: "/user/deleteUser",
@@ -51,7 +52,7 @@
                 data: {"userId": $(this).attr("value")},
                 success: function (data) {
                     alert(data.msg)
-                    window.location.href = "/user/success";
+                    tr.remove();
                 }
             })
         } else {
@@ -76,6 +77,7 @@
             }
         })
     })
+
 </script>
 </body>
 </html>

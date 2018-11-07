@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<input type="file" id="myFile">
+<div>
+    <progress value="0" id="jd"></progress><br>
+    <img src="" id="myImg" />
+</div>
+<button onclick="f()">预览</button>
+
+<script src="../js/jquery-3.3.1.min.js"></script>
+<script>
+
+    function  f() {
+        var files = $("#myFile")[0].files;
+        $("#jd").val(0)
+        console.log(files[0])
+        toDataURL(files[0]);
+    }
+
+    function toDataURL(file){
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = function (event) {
+            $("#jd").attr("max",event.total)
+            setInterval(function(e){
+                var jd = $("#jd").val()
+                if (jd != event.total){
+                    jd += event.total/100;
+                    $("#jd").val(jd);
+                    console.log(jd)
+                } else if ($("#jd").val() == event.total){
+                    $("#myImg").attr("src",event.target.result);
+                }
+            },100)
+        }
+    }
+</script>
+</body>
+</html>

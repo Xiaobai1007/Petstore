@@ -23,17 +23,17 @@
   </delete>
 
   <insert id="insert" parameterType="com.xiaobai.entity.Pet">
-    insert into pet (pet_id, category_id, pet_name, 
+    insert into pet (category_id, pet_name,
       pet_price, pet_photo, pet_tag, 
       pet_status)
-    values (#{petId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{petName,jdbcType=VARCHAR}, 
+    values (#{categoryInfo.categoryId,jdbcType=INTEGER}, #{petName,jdbcType=VARCHAR},
       #{petPrice,jdbcType=DECIMAL}, #{petPhoto,jdbcType=VARCHAR}, #{petTag,jdbcType=VARCHAR}, 
       #{petStatus,jdbcType=VARCHAR})
   </insert>
 
   <update id="updateByPrimaryKey" parameterType="com.xiaobai.entity.Pet">
     update pet
-    set category_id = #{categoryId,jdbcType=INTEGER},
+    set category_id = #{categoryInfo.categoryId,jdbcType=INTEGER},
       pet_name = #{petName,jdbcType=VARCHAR},
       pet_price = #{petPrice,jdbcType=DECIMAL},
       pet_photo = #{petPhoto,jdbcType=VARCHAR},

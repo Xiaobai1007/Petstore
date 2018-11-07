@@ -24,7 +24,7 @@
                     data:{"userName":$("#userName").val(),"userFirstName":$("#userFirstName").val(),"userLastName":$("#userLastName").val(),"userEmail":$("#userEmail").val(),"userPassword":$("#userPassword").val(),"userPhone":$("#userPhone").val(),"userStatus":$("input[name=userStatus]:checked").prop("value")},
                     success:function (data) {
                         alert(data.msg)
-                        window.location.href = "/user/success";
+                        window.location.href = "/user/selectPetAll";
                     }
                 })
             }else{
