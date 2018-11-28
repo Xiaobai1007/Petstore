@@ -6,29 +6,35 @@
 </head>
 <body>
 
-<input type="file" id="myFile">
 <div>
+    <input type="file" id="myImgFile">
     <img src="" id="myImg"/>
-</div>
-<button onclick="f()">预览</button>
+</div><br><br>
+
+<input type="file" id="myMusicFile"><br><br>
+<audio controls="controls" src="" id="myMusic"></audio>
 
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script>
 
-    function f() {
-        var files = $("#myFile")[0].files;
-        $("#jd").val(0)
-        console.log(files[0])
-        toDataURL(files[0]);
-    }
-
-    function toDataURL(file) {
+    myImgFile.addEventListener("change",previewWithDataURL)
+    function previewWithDataURL() {
         var reader = new FileReader();
-        reader.readAsDataURL(file);
+        reader.readAsDataURL($("#myImgFile")[0].files[0]);
         reader.onload = function (event) {
             $("#myImg").attr("src", event.target.result);
         }
     }
+
+    myMusicFile.addEventListener("change",previewWithObjectURL)
+    function previewWithObjectURL() {
+        var target = event.target.files[0];
+        var url = URL.createObjectURL(target);
+        myMusic.src = url;
+        myMusic.play();
+    }
+
+
 </script>
 </body>
 </html>

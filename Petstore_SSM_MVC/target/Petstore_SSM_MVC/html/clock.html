@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="1200px" height="600px" style="border: 1px solid black;">Canvas制作时钟</canvas>
+
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.lineWidth = 3;
+    ctx.arc(600, 200, 4, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(600, 200, 150, 0, 2 * Math.PI);
+    ctx.translate(600, 200);
+
+    ctx.rotate(270 * Math.PI / 180);
+    var i = 0;
+    var list = function () {
+        i += 6;
+        ctx.save();
+        ctx.rotate(i * Math.PI / 180);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(150, 0);
+        ctx.restore();
+        ctx.stroke();
+    }
+    setInterval(list, 1000)
+    list();
+</script>
+</body>
+</html>

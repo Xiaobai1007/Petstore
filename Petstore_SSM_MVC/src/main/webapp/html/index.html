@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="805" height="905">Canvas制作象棋</canvas>
+
+<script>
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.lineWidth = "3";
+    ctx.strokeStyle="brown";
+
+    //边框
+    function border(){
+        //棋盘边框
+        ctx.rect(5,5,400,450);
+
+        //直线
+        for (var i = 1; i <= 9; i++) {
+            ctx.moveTo(5, 5 + (50 * i));
+            ctx.lineTo(405, 5 + (50 * i));
+        }
+
+        //竖线
+        for (var i = 1; i <= 8; i++) {
+            ctx.moveTo(5 + (50 * i), 5);
+            ctx.lineTo(5 + (50 * i), 205);
+            ctx.moveTo(5 + (50 * i), 255);
+            ctx.lineTo(5 + (50 * i), 455);
+        }
+    }
+
+    //斜线
+    function slant(){
+        // 斜线
+        ctx.moveTo(155,5);
+        ctx.lineTo(255,105);
+        ctx.moveTo(255,5);
+        ctx.lineTo(155,105);
+        ctx.moveTo(155,455);
+        ctx.lineTo(255,355);
+        ctx.moveTo(255,455);
+        ctx.lineTo(155,355);
+    }
+
+    //炮
+    function  cannon(){
+        //上左炮
+        ctx.moveTo(47,87);
+        ctx.lineTo(47,97);
+        ctx.lineTo(37,97);
+
+        ctx.moveTo(37,114);
+        ctx.lineTo(47,114);
+        ctx.lineTo(47,124);
+
+        ctx.moveTo(63,87);
+        ctx.lineTo(63,97);
+        ctx.lineTo(73,97);
+
+        ctx.moveTo(73,114);
+        ctx.lineTo(63,114);
+        ctx.lineTo(63,124);
+
+        //下左炮
+        ctx.moveTo(47,337);
+        ctx.lineTo(47,347);
+        ctx.lineTo(37,347);
+
+        ctx.moveTo(37,364);
+        ctx.lineTo(47,364);
+        ctx.lineTo(47,374);
+
+        ctx.moveTo(63,337);
+        ctx.lineTo(63,347);
+        ctx.lineTo(73,347);
+
+        ctx.moveTo(73,364);
+        ctx.lineTo(63,364);
+        ctx.lineTo(63,374);
+
+        //上右炮
+        ctx.moveTo(347,87);
+        ctx.lineTo(347,97);
+        ctx.lineTo(337,97);
+
+        ctx.moveTo(337,114);
+        ctx.lineTo(347,114);
+        ctx.lineTo(347,124);
+
+        ctx.moveTo(363,87);
+        ctx.lineTo(363,97);
+        ctx.lineTo(373,97);
+
+        ctx.moveTo(373,114);
+        ctx.lineTo(363,114);
+        ctx.lineTo(363,124);
+
+        //下右炮
+        ctx.moveTo(347,337);
+        ctx.lineTo(347,347);
+        ctx.lineTo(337,347);
+
+        ctx.moveTo(337,364);
+        ctx.lineTo(347,364);
+        ctx.lineTo(347,374);
+
+        ctx.moveTo(363,337);
+        ctx.lineTo(363,347);
+        ctx.lineTo(373,347);
+
+        ctx.moveTo(373,364);
+        ctx.lineTo(363,364);
+        ctx.lineTo(363,374);
+
+    }
+
+    //兵
+    function soldier() {
+        // 上兵
+        ctx.moveTo(13,137);
+        ctx.lineTo(13,147);
+        ctx.lineTo(23,147);
+
+        ctx.moveTo(23,164);
+        ctx.lineTo(13,164);
+        ctx.lineTo(13,174);
+
+        ctx.moveTo(113,137);
+        ctx.lineTo(113,147);
+        ctx.lineTo(123,147);
+
+        ctx.moveTo(123,164);
+        ctx.lineTo(113,164);
+        ctx.lineTo(113,174);
+
+        ctx.moveTo(213,137);
+        ctx.lineTo(213,147);
+        ctx.lineTo(223,147);
+
+        ctx.moveTo(223,164);
+        ctx.lineTo(213,164);
+        ctx.lineTo(213,174);
+
+        ctx.moveTo(313,137);
+        ctx.lineTo(313,147);
+        ctx.lineTo(323,147);
+
+        ctx.moveTo(323,164);
+        ctx.lineTo(313,164);
+        ctx.lineTo(313,174);
+
+        ctx.moveTo(397,137);
+        ctx.lineTo(397,147);
+        ctx.lineTo(387,147);
+
+        ctx.moveTo(387,164);
+        ctx.lineTo(397,164);
+        ctx.lineTo(397,174);
+
+        ctx.moveTo(297,137);
+        ctx.lineTo(297,147);
+        ctx.lineTo(287,147);
+
+        ctx.moveTo(287,164);
+        ctx.lineTo(297,164);
+        ctx.lineTo(297,174);
+
+        ctx.moveTo(197,137);
+        ctx.lineTo(197,147);
+        ctx.lineTo(187,147);
+
+        ctx.moveTo(187,164);
+        ctx.lineTo(197,164);
+        ctx.lineTo(197,174);
+
+        ctx.moveTo(87,164);
+        ctx.lineTo(97,164);
+        ctx.lineTo(97,174);
+
+        ctx.moveTo(97,137);
+        ctx.lineTo(97,147);
+        ctx.lineTo(87,147);
+
+
+        //下兵
+        ctx.moveTo(13,287);
+        ctx.lineTo(13,297);
+        ctx.lineTo(23,297);
+
+        ctx.moveTo(23,314);
+        ctx.lineTo(13,314);
+        ctx.lineTo(13,324);
+
+        ctx.moveTo(113,287);
+        ctx.lineTo(113,297);
+        ctx.lineTo(123,297);
+
+        ctx.moveTo(123,314);
+        ctx.lineTo(113,314);
+        ctx.lineTo(113,324);
+
+        ctx.moveTo(213,287);
+        ctx.lineTo(213,297);
+        ctx.lineTo(223,297);
+
+        ctx.moveTo(223,314);
+        ctx.lineTo(213,314);
+        ctx.lineTo(213,324);
+
+        ctx.moveTo(313,287);
+        ctx.lineTo(313,297);
+        ctx.lineTo(323,297);
+
+        ctx.moveTo(323,314);
+        ctx.lineTo(313,314);
+        ctx.lineTo(313,324);
+
+        ctx.moveTo(397,287);
+        ctx.lineTo(397,297);
+        ctx.lineTo(387,297);
+
+        ctx.moveTo(387,314);
+        ctx.lineTo(397,314);
+        ctx.lineTo(397,324);
+
+        ctx.moveTo(297,287);
+        ctx.lineTo(297,297);
+        ctx.lineTo(287,297);
+
+        ctx.moveTo(287,314);
+        ctx.lineTo(297,314);
+        ctx.lineTo(297,324);
+
+        ctx.moveTo(197,287);
+        ctx.lineTo(197,297);
+        ctx.lineTo(187,297);
+
+        ctx.moveTo(187,314);
+        ctx.lineTo(197,314);
+        ctx.lineTo(197,324);
+
+        ctx.moveTo(87,314);
+        ctx.lineTo(97,314);
+        ctx.lineTo(97,324);
+
+        ctx.moveTo(97,287);
+        ctx.lineTo(97,297);
+        ctx.lineTo(87,297);
+
+    }
+
+    //初始化
+    var init = function init() {
+        border();
+        slant();
+        cannon();
+        soldier();
+        ctx.stroke();
+    }
+
+    init();
+
+
+
+
+
+
+    ctx.stroke();
+</script>
+</body>
+</html>

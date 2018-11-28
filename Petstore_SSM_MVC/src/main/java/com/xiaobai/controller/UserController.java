@@ -17,6 +17,13 @@ import java.util.List;
 @Controller
 public class UserController {
 
+    @RequestMapping("/cors")
+    @ResponseBody
+    public String cors(@RequestParam(defaultValue = "callback") String callback, HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin","http://192.168.1.226:8081/index");
+        return callback+"('hello')";
+    }
+
     @Autowired
     private UserMapper userMapper;
 
